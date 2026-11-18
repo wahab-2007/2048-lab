@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111215">
+  <title>CESIUM — Element Merge</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="elements.js"></script>
+  <script defer src="state.js"></script>
+  <script defer src="audio.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body data-theme="midnight">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logomark" aria-hidden="true"><small>55</small>Cs</div>
+      <div><h1>CESIUM</h1><span>ELEMENT MERGE</span></div>
+    </div>
+    <button id="header-collection" class="header-progress" type="button" aria-label="Discovery progress and collection">
+      <span class="eyebrow">DISCOVERED</span>
+      <span class="header-count"><strong id="discovered">0</strong><span> / 118</span></span>
+      <progress id="progress" aria-label="Discovered elements" max="118" value="0"></progress>
+    </button>
+  </header>
+
+  <main class="workbench">
+    <section class="playfield" aria-label="Fusion board">
+      <div class="board-heading"><span><i class="signal"></i><span id="mode-title">Sandbox</span></span><span id="board-label">4 × 4</span></div>
+      <div class="board-shell">
+        <div id="board" class="board" aria-label="4 by 4 element board"></div>
+        <div id="effects" aria-hidden="true"></div>
+      </div>
+      <div class="board-controls">
+        <button id="undo" class="button icon-button" type="button" aria-label="Undo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-2"/></svg>
+        </button>
+        <button id="collection-button" class="button primary" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h5v5H3zM10 5h5v5h-5zM17 5h4v5h-4zM3 12h5v5H3zM10 12h5v5h-5zM17 12h4v5h-4z"/></svg>
+          Collection
+        </button>
+        <button id="challenge-button" class="button icon-button" aria-label="Daily challenge" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 5 13h6l-1 9 9-12h-6z"/></svg>
+        </button>
+      </div>
+      <div class="guidance" id="guidance">
+        <span id="hint" aria-live="polite"></span>
+        <button id="hint-action" type="button" class="link-button" hidden></button>
+      </div>
+      <p id="storage-warning" class="storage-warning" hidden></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <button id="settings-button" class="button quiet" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m10 3-.7 2.3L7 6 4.9 5.5 3 8.5l1.6 1.8v3.4L3 15.5l1.9 3 2.1-.5 2.3.7L10 21h4l.7-2.3L17 18l2.1.5 1.9-3-1.6-1.8v-3.4L21 8.5l-1.9-3L17 6l-2.3-.7L14 3z"/></svg>
+      <span>Settings</span>
+    </button>
+    <div class="footer-right">
+      <button id="zen" class="button quiet" aria-pressed="false" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15A8 8 0 0 1 9 4a8.5 8.5 0 1 0 11 11Z"/></svg>
+        <span>Zen</span>
+      </button>
+      <button id="help" class="button quiet" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9a2 2 0 1 1 3 1.7c-.7.4-1 1-1 2.3m0 3h.01"/></svg>
+        <span>Help</span>
+      </button>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="preview" class="merge-preview" hidden></div>
+  <div id="drag-layer" aria-hidden="true"></div>
+  <dialog id="modal" aria-labelledby="modal-title">
+    <div class="dialog-header">
+      <h2 id="modal-title"></h2>
+      <button id="close-modal" class="button icon-button" type="button" aria-label="Close dialog">×</button>
+    </div>
+    <p id="dialog-status" class="dialog-status" role="status" hidden></p>
+    <div id="modal-body" class="dialog-body"></div>
+  </dialog>
+  <input id="import-file" type="file" accept="application/json,.json" hidden>
+</body>
+</html>
